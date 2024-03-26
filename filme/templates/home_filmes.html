@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+HomeFilmes
+{% endblock %}
+
+{% block content %}
+<div class='py-10'>
+    {% for filme in object_list %}
+    <img src="{{filme.thumb.url}}">    
+    {{filme}}
+    {% endfor %}
+</div>
+{% endblock %}
