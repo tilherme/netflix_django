@@ -6,10 +6,14 @@ HomeFilmes
 {% endblock %}
 
 {% block content %}
-<div class='py-10'>
+<div class='py-20'>
     {% for filme in object_list %}
+    {% comment %} <hr> {% endcomment %}
+    <a href="{% url 'filme:detail_film' filme.id %}">
+    <p>{{filme.title}}</p>
+    </a>
+    <p>{{filme.description}}</p>
     <img src="{{filme.thumb.url}}">    
-    {{filme}}
     {% endfor %}
 </div>
 {% endblock %}

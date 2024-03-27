@@ -1,8 +1,10 @@
 from django.urls import path, include
 from .views import *
 
-urlpatterns = [
-    path('', Homepage.as_view()),
-    path('filmes/', HomeFilms.as_view())
+app_name = 'filme'
 
+urlpatterns = [
+    path('', Homepage.as_view(), name='homepage'),
+    path('filmes/', HomeFilms.as_view(), name='home_film'),
+    path('filmes/<int:pk>', DetailFilm.as_view(),name='detail_film')
 ]
