@@ -12,5 +12,12 @@ HomeFilmes
     {{object.description}}
 
     <img src="{{object.thumb.url}}">    
+
+    <h2>Episódios</h2>
+    {%for episodios in object.episodios.all %}
+    <a href="{{episodios.link}}">
+        <p> Episodio {{forloop.counter}}: {{episodios}}</p>
+    </a>
+    {% endfor %}
 </div>
 {% endblock %}

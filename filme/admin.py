@@ -3,3 +3,4 @@ from .models import *
 
 admin.site.register(Film)
 # Register your models here.
+admin.site.register(Episod)

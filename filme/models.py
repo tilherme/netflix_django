@@ -18,3 +18,12 @@ class Film(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class Episod(models.Model):
+    film = models.ForeignKey('Film', related_name='episodios', on_delete=models.CASCADE)
+    title = models.CharField(max_length=100)
+    link = models.URLField()
+    
+    def __str__(self):
+        return self.title
