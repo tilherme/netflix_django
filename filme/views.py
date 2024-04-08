@@ -1,3 +1,4 @@
+from typing import Any
 from django.shortcuts import render
 from .models import *
 from django.views.generic import TemplateView, ListView, DetailView
@@ -23,3 +24,10 @@ class HomeFilms(ListView):
 class DetailFilm(DetailView):
     template_name = 'detail_film.html'
     model = Film
+    # object
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailFilm, self).get_context_data(**kwargs) 
+        film_relations = Film.objects.filter(category= self.get_object().category) # lista python filtro por category self.get_object() meu object 
+        context["film_relations"] = film_relations
+        return context              

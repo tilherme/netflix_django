@@ -20,4 +20,45 @@ HomeFilmes
     </a>
     {% endfor %}
 </div>
+<div class='py-20'>
+    <h2>Filmes Relacionados</h2>
+    {% comment %} {%for film in film_relations %}
+    <p>
+        <a href="{% url 'filme:detail_film' filme.pk %}">
+         {{film.title}}
+        </a> {% endcomment %}
+    </p>
+    {% for film in film_relations %}
+    <p>
+        <a href="{% url 'filme:detail_film' film.id %}">
+            {{ film.title }}
+        </a>
+    </p>
+{% comment %} {% endfor %} {% endcomment %}
+
+    {% endfor %}
+</div>
+<div class='py-20'>
+    <h2>Filmes Recentes</h2>
+    {% comment %} {%for film in film_relations %}
+    <p>
+        <a href="{% url 'filme:detail_film' filme.pk %}">
+         {{film.title}}
+        </a> {% endcomment %}
+    <p>
+            {{list_recent_movie }}
+    </p>
+{% comment %} {% endfor %} {% endcomment %}
+
+</div>
+
+<div class='py-20'>
+    <h2>Filmes em alta</h2>
+
+    <p>
+            {{list_recent_movie }}
+    </p>
+
+</div>
+
 {% endblock %}
