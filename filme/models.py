@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import AbstractUser
+
 LIST_CATEGORY = (
     ("ACAO", "Ação"),
     ("TERROR", "Terror"),
@@ -27,3 +29,6 @@ class Episod(models.Model):
     
     def __str__(self):
         return self.title
+
+class User(AbstractUser):
+    film_previw = models.ManyToManyField('Film')
