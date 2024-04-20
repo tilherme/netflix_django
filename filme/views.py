@@ -1,4 +1,5 @@
 from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render
 from .models import *
 from django.views.generic import TemplateView, ListView, DetailView
@@ -38,3 +39,16 @@ class DetailFilm(DetailView):
         film_relations = Film.objects.filter(category= self.get_object().category) # lista python filtro por category self.get_object() meu object 
         context["film_relations"] = film_relations
         return context              
+
+
+class SearchFilm(ListView):
+    template_name = 'search_film.html'
+    model = Film
+    def get_queryset(self):
+        search = self.request.GET.get('query')
+        if search:
+            object_list = self.model.objects.filter(title__icontains= search)
+            return object_list
+        else:
+            return None
+        return super().get_queryset()
