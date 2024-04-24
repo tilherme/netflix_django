@@ -31,6 +31,7 @@ class DetailFilm(DetailView):
         movie = self.get_object()
         movie.preview += 1
         movie.save()
+        request.user.film_previw.add(movie)
 
         return super().get(request, *args, **kwargs) #redireciona o user para a url final
 
