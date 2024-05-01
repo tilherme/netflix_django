@@ -1,9 +1,9 @@
 from typing import Any
 from django.db.models.query import QuerySet
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from django.views.generic import TemplateView, ListView, DetailView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 # def homepage(request):
 #     return render(request, 'homepage.html')
@@ -11,18 +11,26 @@ from django.views.generic import TemplateView, ListView, DetailView
 class Homepage(TemplateView):
     template_name = 'homepage.html'
 
+    def get(self, request, *args, **kwargs):
+        if  request.user.is_authenticated:
+           return redirect('filme:home_film')
+        else:
+            return super().get(request, *args, **kwargs) #redireciona o user para a url final
+
 # def home_filmes(request):
 #     list_filmes = Film.objects.all()
 #     context = {}
 #     context['list_filmes'] = list_filmes
 #     return render (request, 'home_filmes.html', context)
     
-class HomeFilms(ListView):
+class EditUser( LoginRequiredMixin,TemplateView):
+    template_name = 'edit_user.html'
+class HomeFilms(LoginRequiredMixin, ListView):
     template_name = 'home_filmes.html'
     model = Film
     # object_list
 
-class DetailFilm(DetailView):
+class DetailFilm(LoginRequiredMixin, DetailView):
     template_name = 'detail_film.html'
     model = Film
     # object -> 1 item
@@ -42,7 +50,7 @@ class DetailFilm(DetailView):
         return context              
 
 
-class SearchFilm(ListView):
+class SearchFilm(LoginRequiredMixin, ListView):
     template_name = 'search_film.html'
     model = Film
     def get_queryset(self):
