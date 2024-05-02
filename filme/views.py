@@ -25,6 +25,11 @@ class Homepage(TemplateView):
     
 class EditUser( LoginRequiredMixin,TemplateView):
     template_name = 'edit_user.html'
+
+
+class CreateUser(TemplateView):
+    template_name = 'create_user.html'
+
 class HomeFilms(LoginRequiredMixin, ListView):
     template_name = 'home_filmes.html'
     model = Film
