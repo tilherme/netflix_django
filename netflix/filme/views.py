@@ -1,15 +1,23 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
 from .models import *
-from .forms import CreateUser
-from django.views.generic import TemplateView, ListView, DetailView, FormView
+from .forms import CreateUser, FormHome
+from django.views.generic import TemplateView, ListView, DetailView, FormView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 # def homepage(request):
 #     return render(request, 'homepage.html')
 
-class Homepage(TemplateView):
+class Homepage(FormView):
     template_name = 'homepage.html'
+    form_class = FormHome
+    def get_success_url(self) -> str:
+        email = self.request.POST.get('email')
+        user = User.objects.filter(email=email)
+        if user:
+            return reverse('filme:login')
+        else:
+            return reverse('filme:create_user')
 
     def get(self, request, *args, **kwargs):
         if  request.user.is_authenticated:
@@ -23,11 +31,12 @@ class Homepage(TemplateView):
 #     context['list_filmes'] = list_filmes
 #     return render (request, 'home_filmes.html', context)
     
-class EditUser(LoginRequiredMixin,TemplateView):
+class EditUser(LoginRequiredMixin, UpdateView):
     template_name = 'edit_user.html'
-class LogoutView(TemplateView):
-    template_name = 'logout.html'
-
+    model = User
+    fields = ['first_name', 'last_name', 'email']
+    def get_success_url(self):
+        return reverse('filme:home_film')
 class CreateUser(FormView):
     template_name = 'create_user.html'
     form_class = CreateUser
