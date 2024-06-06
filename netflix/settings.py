@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
+import os
 
 from pathlib import Path
 
@@ -18,9 +19,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
+TOKEN = os.getenv('TOKEN')
+if TOKEN:
+    SECRET_KEY = TOKEN
+    CSRF_TRUSTRED_ORIGINS =['https://netflixdjango-production-5b8f.up.railway.app/']
+else:
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&c#xf@=!&dmvmo^w3f3smc)sn_p!olm8z(+nz(q)ry956yq(l%'
+    SECRET_KEY = 'django-insecure-&c#xf@=!&dmvmo^w3f3smc)sn_p!olm8z(+nz(q)ry956yq(l%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -89,7 +95,6 @@ DATABASES = {
     }
 }
 import dj_database_url
-import os
 DATABASE_URL = os.getenv('DATABASE_URL')
 
 if DATABASE_URL:
