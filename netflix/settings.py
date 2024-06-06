@@ -19,13 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
-TOKEN = os.getenv('TOKEN')
-if TOKEN:
-    SECRET_KEY = TOKEN
-    CSRF_TRUSTED_ORIGINS =['https://netflixdjango-production-5b8f.up.railway.app']
-else:
+TOKEN_CSRF = os.getenv('TOKEN_CSRF')
 
-# SECURITY WARNING: keep the secret key used in production secret!
+if TOKEN_CSRF:
+    SECRET_KEY = TOKEN_CSRF
+    CSRF_TRUSTED_ORIGINS =['https://netflixdjango-production-5b8f.up.railway.app', '27.0.0.1:8000']
+else:
     SECRET_KEY = 'django-insecure-&c#xf@=!&dmvmo^w3f3smc)sn_p!olm8z(+nz(q)ry956yq(l%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
