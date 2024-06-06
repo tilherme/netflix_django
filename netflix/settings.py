@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TOKEN = os.getenv('TOKEN')
 if TOKEN:
     SECRET_KEY = TOKEN
-    CSRF_TRUSTRED_ORIGINS =['https://netflixdjango-production-5b8f.up.railway.app/']
+    CSRF_TRUSTED_ORIGINS =['https://netflixdjango-production-5b8f.up.railway.app/']
 else:
 
 # SECURITY WARNING: keep the secret key used in production secret!
