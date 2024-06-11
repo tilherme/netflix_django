@@ -15,6 +15,7 @@ class FilmeConfig(AppConfig):
 
     #     if not user:
     #         User.objects.create_superuser(username='admin', email=email, password=password,
+                                 
                                                         # is_active=True, is_staff=True)
     def ready(self):
         from .models import User 
