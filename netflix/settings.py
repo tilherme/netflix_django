@@ -23,7 +23,7 @@ TOKEN_CSRF = os.getenv('TOKEN_CSRF')
 
 if TOKEN_CSRF:
     SECRET_KEY = TOKEN_CSRF
-    CSRF_TRUSTED_ORIGINS =['https://netflixdjango-production-5b8f.up.railway.app']
+    CSRF_TRUSTED_ORIGINS =['https://netflixdjango-production-d61d.up.railway.app']
 else:
     SECRET_KEY = 'django-insecure-&c#xf@=!&dmvmo^w3f3smc)sn_p!olm8z(+nz(q)ry956yq(l%'
 
