@@ -16,19 +16,19 @@ class FilmeConfig(AppConfig):
     #     if not user:
     #         User.objects.create_superuser(username='admin', email=email, password=password,
                                  
-                                                        # is_active=True, is_staff=True)
-    def ready(self):
-        from .models import User 
-        import os
+    #                                                     # is_active=True, is_staff=True)
+    # def ready(self):
+    #     from .models import User 
+    #     import os
 
-        email = os.getenv('EMAIL_ADMIN')
-        password = os.getenv('SENHA_ADMIN')
+    #     email = os.getenv('EMAIL_ADMIN')
+    #     password = os.getenv('SENHA_ADMIN')
 
-        if not email:
-            email = 'admin@admin.com'
+    #     if not email:
+    #         email = 'admin@admin.com'
 
-        user = User.objects.filter(email=email)
+    #     user = User.objects.filter(email=email)
 
-        if not user:
-            User.objects.create_superuser(username='admin', email=email, password=password,
-                                                        is_active=True, is_staff=True)
+    #     if not user:
+    #         User.objects.create_superuser(username='admin', email=email, password=password,
+    #                                                     is_active=True, is_staff=True)
