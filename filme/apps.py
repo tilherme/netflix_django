@@ -17,5 +17,5 @@ class FilmeConfig(AppConfig):
         user = User.objects.filter(email=email)
 
         if not user:
-            User.objects.create_superuser(username='admingui', email=email, password=password,
+            User.objects.create_superuser(username='admin', email=email, password=password,
                                                         is_active=True, is_staff=True)
