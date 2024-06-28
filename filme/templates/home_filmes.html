@@ -79,8 +79,6 @@ h1 {
 </style>
 {%endblock %}
 {% block content %}
-
-
 <main class='bg-primary_black min-h-screen w-full'>
     <section class="h-screen relative bg-no-repeat pb-8 pl-6 flex items-end bg-cover" style="background-image: url('{{movie_destaque.thumb.url}}');">
         <div>
@@ -103,6 +101,8 @@ h1 {
         </div>
     </section> 
 
+</main>
+
 
     <section class='bg-primary_black flex justify-center py-10'>
         <div class="p-8 w-10/12 relative" >
@@ -117,7 +117,7 @@ h1 {
 
                 <div class="item h-64 w-1/4 m-4">
                       <a href="{% url 'filme:detail_film' filme.id %}">
-                        <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
+                        <img src="{{filme.thumb.url}}" class="rounded-md w-100 h-100 object-contain">
                       </a>
                   </div>
                   {% endif %}
@@ -131,7 +131,7 @@ h1 {
                     {%if forloop.counter > 4%}
                     <div class="item h-64 w-1/4 m-4">
                           <a href="{% url 'filme:detail_film' filme.id %}">
-                            <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
+                            <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-contain">
                           </a>
                       </div>
                       {% endif %}
@@ -158,7 +158,7 @@ h1 {
 
                 <div class="item h-64 w-1/4 m-4">
                       <a href="{% url 'filme:detail_film' filme.id %}">
-                        <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
+                        <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-contain">
                       </a>
                   </div>
                   {% endif %}
@@ -172,7 +172,7 @@ h1 {
                     {%if forloop.counter > 4%}
                     <div class="item h-64 w-1/4 m-4">
                           <a href="{% url 'filme:detail_film' filme.id %}">
-                            <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
+                            <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-contain">
                           </a>
                       </div>
                       {% endif %}
@@ -198,7 +198,7 @@ h1 {
 
               <div class="item h-64 w-1/4 m-4">
                     <a href="{% url 'filme:detail_film' filme.id %}">
-                      <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
+                      <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-contain">
                     </a>
                 </div>
                 {% endif %}
@@ -212,7 +212,7 @@ h1 {
                   {%if forloop.counter > 4%}
                   <div class="item h-64 w-1/4 m-4">
                         <a href="{% url 'filme:detail_film' filme.id %}">
-                          <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-cover">
+                          <img src="{{filme.thumb.url}}" class="rounded-md w-full h-full object-contain">
                         </a>
                     </div>
                     {% endif %}
@@ -224,9 +224,6 @@ h1 {
 
 
       </div>
-  </section>
-  <section>
-    {{request.user.film_previw.all}}
   </section>
   
 
